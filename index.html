@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Ads Profit Leak Finder | 47-Point Audit</title>
+    <meta name="description" content="Find the profit leaks draining your Facebook ad budget with this free 47-point diagnostic tool.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Hero Section -->
+        <section id="hero" class="screen active">
+            <div class="hero-content">
+                <div class="badge">FREE DIAGNOSTIC TOOL</div>
+                <h1>Find the Profit Leaks <span class="highlight">Draining Your Facebook Ad Budget</span></h1>
+                <p class="tagline">The 47-Point Audit That's Saved Clients $127K+</p>
+                <p class="description">Answer 47 quick questions about your Facebook Ads account and discover exactly where you're losing money — plus get a personalized fix list.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">47</span>
+                        <span class="stat-label">Checkpoints</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Key Areas</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5 min</span>
+                        <span class="stat-label">To Complete</span>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="startAudit()">
+                    Start Your Free Audit
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+                <p class="trust-text">No credit card required • Results in 5 minutes</p>
+            </div>
+        </section>
+
+        <!-- Audit Form -->
+        <section id="audit-form" class="screen">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text" id="progress-text">Section 1 of 6</span>
+            </div>
+
+            <form id="audit-form-element">
+                <!-- Section 1: Account Architecture -->
+                <div class="form-section active" data-section="1">
+                    <div class="section-header">
+                        <div class="section-icon">🏗️</div>
+                        <div>
+                            <h2>Account Architecture</h2>
+                            <p class="section-subtitle">How well is your account structured?</p>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Campaign Level</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q1_1">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Campaign budget is at least $50/day</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q1_2">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">No campaigns competing for the same audience</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="2">
+                                <input type="checkbox" name="q1_3">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Using proper campaign objectives</span>
+                                <span class="points-badge">2 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="2">
+                                <input type="checkbox" name="q1_4">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Advantage+ campaigns separated from manual</span>
+                                <span class="points-badge">2 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Ad Set Level</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="2">
+                                <input type="checkbox" name="q1_5">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Running 3-5 ad sets per campaign max (not 10+)</span>
+                                <span class="points-badge">2 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q1_6">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Audience size is 500K-2M per ad set</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="2">
+                                <input type="checkbox" name="q1_7">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Using CBO (Campaign Budget Optimization)</span>
+                                <span class="points-badge">2 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="2">
+                                <input type="checkbox" name="q1_8">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Ad sets have spent $100+ before making decisions</span>
+                                <span class="points-badge">2 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Ad Level</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="2">
+                                <input type="checkbox" name="q1_9">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Running 2-4 ads per ad set (not 10+)</span>
+                                <span class="points-badge">2 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="2">
+                                <input type="checkbox" name="q1_10">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Ads run 3-7 days before judging performance</span>
+                                <span class="points-badge">2 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section-nav">
+                        <button type="button" class="btn-secondary" onclick="goToHero()">Back</button>
+                        <button type="button" class="btn-primary" onclick="nextSection()">
+                            Continue
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 2: Audience Targeting -->
+                <div class="form-section" data-section="2">
+                    <div class="section-header">
+                        <div class="section-icon">🎯</div>
+                        <div>
+                            <h2>Audience Targeting</h2>
+                            <p class="section-subtitle">Are you reaching the right people efficiently?</p>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Overlap Issues</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="5">
+                                <input type="checkbox" name="q2_1">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Audience Overlap is under 25%</span>
+                                <span class="points-badge">5 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q2_2">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Not stacking "Engaged Shoppers" with interest targeting</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q2_3">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Lookalikes and interests in separate ad sets</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Targeting Mistakes</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q2_4">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Excluding past purchasers from prospecting</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q2_5">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Detailed targeting expansion OFF initially</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q2_6">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Not targeting low-intent countries</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q2_7">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Age range is specific, not 18-65+</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Lookalike Strategy</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q2_8">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Using 1% lookalikes (not 5-10%)</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q2_9">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Lookalikes based on purchasers, not page visitors</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q2_10">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Lookalike seed has 1,000+ customers</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Retargeting</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q2_11">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Separate campaigns for warm traffic</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q2_12">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Excluding recent visitors from cold campaigns</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q2_13">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Proper attribution windows (7-day click)</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section-nav">
+                        <button type="button" class="btn-secondary" onclick="prevSection()">Back</button>
+                        <button type="button" class="btn-primary" onclick="nextSection()">
+                            Continue
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 3: Creative Performance -->
+                <div class="form-section" data-section="3">
+                    <div class="section-header">
+                        <div class="section-icon">🎨</div>
+                        <div>
+                            <h2>Creative Performance</h2>
+                            <p class="section-subtitle">How effective are your ads?</p>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Ad Format</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q3_1">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Using video OR carousel for cold traffic</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q3_2">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Testing different hooks in first 3 seconds</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q3_3">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Using UGC-style content</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Copy</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q3_4">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Headline calls out specific pain point</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q3_5">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Offer clear in first line</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q3_6">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Using social proof in ad copy</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Testing</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q3_7">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Letting winners run 14+ days before refresh</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q3_8">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Frequency below 3.5 (not exhausting audience)</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section-nav">
+                        <button type="button" class="btn-secondary" onclick="prevSection()">Back</button>
+                        <button type="button" class="btn-primary" onclick="nextSection()">
+                            Continue
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 4: Conversion Setup -->
+                <div class="form-section" data-section="4">
+                    <div class="section-header">
+                        <div class="section-icon">🔄</div>
+                        <div>
+                            <h2>Conversion Setup</h2>
+                            <p class="section-subtitle">Is your tracking and landing page optimized?</p>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Pixel & Tracking</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="5">
+                                <input type="checkbox" name="q4_1">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Facebook Pixel firing correctly</span>
+                                <span class="points-badge">5 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="5">
+                                <input type="checkbox" name="q4_2">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Tracking the RIGHT event (Purchase, not Add to Cart)</span>
+                                <span class="points-badge">5 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q4_3">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Using Conversions API alongside Pixel</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q4_4">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Conversion event firing 50x/week per ad set</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Landing Page</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q4_5">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Ad → landing page message match</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q4_6">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Mobile load time under 3 seconds</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q4_7">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Clear CTA above the fold</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Offer Strength</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q4_8">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Offer competitive vs alternatives</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q4_9">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Max CPA calculated for profitability</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section-nav">
+                        <button type="button" class="btn-secondary" onclick="prevSection()">Back</button>
+                        <button type="button" class="btn-primary" onclick="nextSection()">
+                            Continue
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 5: Bidding & Budget -->
+                <div class="form-section" data-section="5">
+                    <div class="section-header">
+                        <div class="section-icon">💰</div>
+                        <div>
+                            <h2>Bidding & Budget</h2>
+                            <p class="section-subtitle">Are you spending wisely?</p>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Bid Strategy</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q5_1">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Using "Highest Volume" initially</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q5_2">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Cost Cap set 30-50% above target (if using)</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q5_3">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Avoiding Bid Cap unless advanced</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Budget Issues</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q5_4">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">No rapid budget increases (>20%/day)</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q5_5">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Ads running 24/7 or properly scheduled</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q5_6">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Budget appropriate for purchase cycle</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Learning Phase</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q5_7">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Leaving ad sets alone during learning</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q5_8">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Getting 50 conversions/week per ad set</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section-nav">
+                        <button type="button" class="btn-secondary" onclick="prevSection()">Back</button>
+                        <button type="button" class="btn-primary" onclick="nextSection()">
+                            Continue
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 6: Advanced Optimization -->
+                <div class="form-section" data-section="6">
+                    <div class="section-header">
+                        <div class="section-icon">⚡</div>
+                        <div>
+                            <h2>Advanced Optimization</h2>
+                            <p class="section-subtitle">Final polish for maximum performance</p>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Placement Control</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q6_1">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Reviewing placement breakdown monthly</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q6_2">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Removing placements with 2x+ CPA</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="3">
+                                <input type="checkbox" name="q6_3">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Not running Audience Network for conversions</span>
+                                <span class="points-badge">3 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Account Hygiene</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q6_4">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Pausing ads with 0 conversions after $50 spend</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q6_5">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Refreshing creatives every 4-6 weeks</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                            <label class="checkbox-item" data-points="4">
+                                <input type="checkbox" name="q6_6">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Excluding converted users from retargeting</span>
+                                <span class="points-badge">4 pts</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section-nav">
+                        <button type="button" class="btn-secondary" onclick="prevSection()">Back</button>
+                        <button type="button" class="btn-primary" onclick="showEmailCapture()">
+                            See My Results
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- Email Capture -->
+        <section id="email-capture" class="screen">
+            <div class="email-content">
+                <div class="email-icon">📊</div>
+                <h2>Your Results Are Ready!</h2>
+                <p>Enter your email to see your personalized profit leak report and get actionable fixes.</p>
+                <form id="email-form" onsubmit="submitEmail(event)">
+                    <div class="input-group">
+                        <input type="text" id="user-name" placeholder="Your Name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="user-email" placeholder="Your Email" required>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">
+                        Show My Results
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </form>
+                <p class="privacy-text">We respect your privacy. No spam, ever.</p>
+            </div>
+        </section>
+
+        <!-- Results -->
+        <section id="results" class="screen">
+            <div class="results-content">
+                <div class="results-header">
+                    <h2>Your Profit Leak Report</h2>
+                    <p class="results-name" id="results-name"></p>
+                </div>
+
+                <div class="score-card">
+                    <div class="score-circle">
+                        <svg class="score-ring" viewBox="0 0 120 120">
+                            <circle class="score-ring-bg" cx="60" cy="60" r="54"/>
+                            <circle class="score-ring-progress" cx="60" cy="60" r="54" id="score-ring"/>
+                        </svg>
+                        <div class="score-value">
+                            <span class="score-number" id="score-number">0</span>
+                            <span class="score-total">/181</span>
+                        </div>
+                    </div>
+                    <div class="score-details">
+                        <div class="tier-badge" id="tier-badge">Loading...</div>
+                        <p class="tier-description" id="tier-description"></p>
+                        <div class="waste-estimate" id="waste-estimate"></div>
+                    </div>
+                </div>
+
+                <div class="section-breakdown">
+                    <h3>Section Breakdown</h3>
+                    <div class="breakdown-list" id="breakdown-list"></div>
+                </div>
+
+                <div class="priority-fixes">
+                    <h3>🔥 Top 3 Priority Fixes</h3>
+                    <div class="fixes-list" id="fixes-list"></div>
+                </div>
+
+                <div class="cta-section">
+                    <h3>Want Expert Help Fixing These Issues?</h3>
+                    <p>Book a free 30-minute audit call and I'll show you exactly how to plug these leaks.</p>
+                    <a href="https://calendly.com" target="_blank" class="btn-primary btn-cta">
+                        Book Your Free Audit Call
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <p class="cta-subtext">— Marcel, Performance Marketing Specialist</p>
+                </div>
+
+                <button class="btn-secondary btn-restart" onclick="restartAudit()">
+                    Start New Audit
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
