@@ -658,24 +658,37 @@ function showResults(userName) {
         setTimeout(triggerConfetti, 500);
     }
 
-    // Set user name
+    // Set user name and date
     document.getElementById('results-name').textContent = `Results for ${userName}`;
+    const resultsDate = document.getElementById('results-date');
+    if (resultsDate) {
+        resultsDate.textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric', month: 'long', day: 'numeric'
+        });
+    }
 
     // Animate score
     const scoreNumber = document.getElementById('score-number');
     const scoreRing = document.getElementById('score-ring');
-    const circumference = 339.292;
-    const progress = (totalScore / MAX_SCORE) * circumference;
+    const circumference = 339.292; // 2 * PI * 54
 
     // Set ring color based on tier
-    let ringColor = '#22c55e';
+    let ringColor = '#22c55e'; // green for elite/strong
     if (tier.class === 'average') ringColor = '#f59e0b';
     if (tier.class === 'struggling') ringColor = '#f97316';
     if (tier.class === 'crisis') ringColor = '#ef4444';
 
-    scoreRing.style.stroke = ringColor;
+    if (scoreRing) {
+        scoreRing.style.stroke = ringColor;
 
-    // Animate score number
+        // Animate ring fill
+        const progress = (totalScore / MAX_SCORE) * circumference;
+        setTimeout(() => {
+            scoreRing.style.strokeDashoffset = circumference - progress;
+        }, 100);
+    }
+
+    // Animate score number counting up
     let current = 0;
     const duration = 1500;
     const increment = totalScore / (duration / 16);
@@ -690,39 +703,47 @@ function showResults(userName) {
         }
     };
 
-    setTimeout(() => {
-        scoreRing.style.strokeDashoffset = circumference - progress;
-    }, 100);
-
     requestAnimationFrame(animateScore);
 
     // Set tier badge
     const tierBadge = document.getElementById('tier-badge');
-    tierBadge.textContent = tier.name;
-    tierBadge.className = `tier-badge ${tier.class}`;
+    if (tierBadge) {
+        tierBadge.textContent = tier.name;
+        tierBadge.className = `tier-badge ${tier.class}`;
+    }
 
     // Set tier description
-    document.getElementById('tier-description').textContent = tier.description;
+    const tierDesc = document.getElementById('tier-description');
+    if (tierDesc) {
+        tierDesc.textContent = tier.description;
+    }
 
     // Set waste estimate
     const wasteEl = document.getElementById('waste-estimate');
-    if (tier.waste) {
-        wasteEl.textContent = tier.waste;
-        wasteEl.className = `waste-estimate ${tier.wasteClass}`;
-    } else {
-        wasteEl.textContent = 'Minimal waste detected';
-        wasteEl.className = 'waste-estimate good';
+    if (wasteEl) {
+        if (tier.waste) {
+            wasteEl.textContent = tier.waste;
+            wasteEl.className = `meta-value ${tier.wasteClass}`;
+        } else {
+            wasteEl.textContent = 'Minimal';
+            wasteEl.className = 'meta-value good';
+        }
     }
 
-    // Benchmark bar
+    // Set percentile
+    const percentileEl = document.getElementById('percentile');
+    if (percentileEl) {
+        percentileEl.textContent = `Top ${100 - percentile}%`;
+        percentileEl.className = `meta-value ${tier.wasteClass}`;
+    }
+
+    // Benchmark bar - position marker based on score
     const benchmarkMarker = document.getElementById('benchmark-marker');
-    const benchmarkPercentile = document.getElementById('benchmark-percentile');
-
-    setTimeout(() => {
-        benchmarkMarker.style.left = `${(totalScore / MAX_SCORE) * 100}%`;
-    }, 300);
-
-    benchmarkPercentile.innerHTML = `You're in the top <strong>${100 - percentile}%</strong> of Facebook advertisers`;
+    if (benchmarkMarker) {
+        setTimeout(() => {
+            benchmarkMarker.style.left = `${(totalScore / MAX_SCORE) * 100}%`;
+        }, 300);
+    }
 
     // Render section breakdown
     renderBreakdown(sectionScores);
