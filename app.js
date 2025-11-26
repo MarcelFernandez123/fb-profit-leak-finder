@@ -443,15 +443,4 @@ function restartAudit() {
     showScreen('hero');
 }
 
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    // Add click effect to checkboxes
-    document.querySelectorAll('.checkbox-item').forEach(item => {
-        item.addEventListener('click', (e) => {
-            if (e.target.tagName !== 'INPUT') {
-                const checkbox = item.querySelector('input[type="checkbox"]');
-                checkbox.checked = !checkbox.checked;
-            }
-        });
-    });
-});
+// Initialize - checkboxes work via native label behavior now
