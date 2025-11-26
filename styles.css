@@ -1,36 +1,50 @@
 /* ===================================
    Facebook Ads Profit Leak Finder
-   Premium Styles v2.0
+   Evolve Strategists Branded v2.1
    =================================== */
 
-/* CSS Variables */
-:root {
-    /* Colors */
-    --bg-primary: #0a0a0f;
-    --bg-secondary: #12121a;
-    --bg-tertiary: #1a1a25;
-    --bg-card: #16161f;
-    --bg-hover: #1e1e2a;
+/* Google Fonts - Poppins (matching Evolve Strategists) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-    --gold: #f5a623;
-    --gold-light: #ffc857;
-    --gold-glow: rgba(245, 166, 35, 0.3);
+/* CSS Variables - Evolve Strategists Brand */
+:root {
+    /* Brand Colors */
+    --bg-primary: #000e29;
+    --bg-secondary: #011459;
+    --bg-tertiary: #0a1a3a;
+    --bg-card: #001233;
+    --bg-hover: #0a2040;
+
+    /* Primary Accent - Royal Blue */
+    --primary: #4169e1;
+    --primary-light: #5a7fe8;
+    --primary-glow: rgba(65, 105, 225, 0.3);
+
+    /* Secondary Accent - Green */
+    --accent: #37ca37;
+    --accent-light: #4fd84f;
+    --accent-glow: rgba(55, 202, 55, 0.3);
+
+    /* Legacy gold mapped to blue for compatibility */
+    --gold: #4169e1;
+    --gold-light: #5a7fe8;
+    --gold-glow: rgba(65, 105, 225, 0.3);
 
     --text-primary: #ffffff;
-    --text-secondary: #a0a0b0;
-    --text-muted: #6b6b7b;
+    --text-secondary: #cbd5e0;
+    --text-muted: #8899a6;
 
-    --success: #22c55e;
-    --success-bg: rgba(34, 197, 94, 0.1);
-    --warning: #f59e0b;
-    --warning-bg: rgba(245, 158, 11, 0.1);
-    --danger: #ef4444;
-    --danger-bg: rgba(239, 68, 68, 0.1);
-    --info: #3b82f6;
-    --info-bg: rgba(59, 130, 246, 0.1);
+    --success: #37ca37;
+    --success-bg: rgba(55, 202, 55, 0.1);
+    --warning: #f6ad55;
+    --warning-bg: rgba(246, 173, 85, 0.1);
+    --danger: #e93d3d;
+    --danger-bg: rgba(233, 61, 61, 0.1);
+    --info: #188bf6;
+    --info-bg: rgba(24, 139, 246, 0.1);
 
-    --border-color: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(255, 255, 255, 0.15);
+    --border-color: rgba(65, 105, 225, 0.2);
+    --border-hover: rgba(65, 105, 225, 0.4);
 
     /* Spacing */
     --container-width: 680px;
@@ -41,8 +55,8 @@
     --spacing-xl: 32px;
     --spacing-2xl: 48px;
 
-    /* Typography */
-    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    /* Typography - Poppins */
+    --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
@@ -53,17 +67,17 @@
     --font-size-4xl: 2.5rem;
 
     /* Border Radius */
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 16px;
-    --radius-xl: 20px;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
     --radius-full: 9999px;
 
-    /* Shadows */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --shadow-gold: 0 4px 20px rgba(245, 166, 35, 0.25);
+    /* Shadows - Evolve style with blue tint */
+    --shadow-sm: 0 2px 8px rgba(0, 14, 41, 0.4);
+    --shadow-md: 0 4px 16px rgba(0, 14, 41, 0.5);
+    --shadow-lg: 0 6px 22px 11px rgba(0, 0, 0, 0.4);
+    --shadow-primary: 0 4px 20px rgba(65, 105, 225, 0.35);
 
     /* Transitions */
     --transition-fast: 150ms ease;
@@ -222,13 +236,13 @@ body {
 }
 
 /* ===================================
-   HERO SECTION
+   HERO SECTION - Evolve Strategists Style
    =================================== */
 #hero {
     background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     background-image:
-        radial-gradient(ellipse 100% 80% at 50% -30%, rgba(245, 166, 35, 0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 90% 90%, rgba(245, 166, 35, 0.06) 0%, transparent 50%);
+        radial-gradient(ellipse 100% 80% at 50% -30%, rgba(65, 105, 225, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 90% 90%, rgba(55, 202, 55, 0.08) 0%, transparent 50%);
     text-align: center;
     padding: var(--spacing-xl) var(--spacing-lg);
 }
@@ -253,12 +267,12 @@ body {
 .badge {
     display: inline-block;
     padding: var(--spacing-xs) var(--spacing-md);
-    background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(255, 200, 87, 0.1) 100%);
-    border: 1px solid rgba(245, 166, 35, 0.3);
+    background: linear-gradient(135deg, rgba(65, 105, 225, 0.2) 0%, rgba(55, 202, 55, 0.1) 100%);
+    border: 1px solid rgba(65, 105, 225, 0.4);
     border-radius: var(--radius-full);
     font-size: var(--font-size-xs);
     font-weight: 600;
-    color: var(--gold);
+    color: var(--primary-light);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin-bottom: var(--spacing-lg);
@@ -266,14 +280,14 @@ body {
 
 #hero h1 {
     font-size: clamp(1.75rem, 5vw, var(--font-size-4xl));
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.2;
     margin-bottom: var(--spacing-md);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
 }
 
 .highlight {
-    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -408,31 +422,34 @@ body {
 }
 
 /* ===================================
-   BUTTONS
+   BUTTONS - Evolve Strategists Style
    =================================== */
 .btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm);
-    padding: var(--spacing-md) var(--spacing-xl);
-    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-    color: #000;
-    border: none;
+    padding: 12px 40px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: #ffffff;
+    border: 2px solid var(--primary);
     border-radius: var(--radius-md);
     font-family: var(--font-family);
     font-size: var(--font-size-base);
-    font-weight: 600;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     cursor: pointer;
     transition: var(--transition-normal);
-    box-shadow: var(--shadow-gold);
+    box-shadow: var(--shadow-primary);
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(245, 166, 35, 0.35);
+    box-shadow: 0 6px 25px rgba(65, 105, 225, 0.45);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
 }
 
 .btn-primary:active {
@@ -440,7 +457,7 @@ body {
 }
 
 .btn-large {
-    padding: var(--spacing-lg) var(--spacing-2xl);
+    padding: 16px 48px;
     font-size: var(--font-size-lg);
 }
 
@@ -450,13 +467,13 @@ body {
     justify-content: center;
     gap: var(--spacing-sm);
     padding: var(--spacing-md) var(--spacing-lg);
-    background: var(--bg-tertiary);
+    background: transparent;
     color: var(--text-primary);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: var(--radius-md);
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     transition: var(--transition-normal);
     touch-action: manipulation;
@@ -464,8 +481,9 @@ body {
 }
 
 .btn-secondary:hover {
-    background: var(--bg-hover);
-    border-color: var(--border-hover);
+    background: var(--primary-glow);
+    border-color: var(--primary);
+    color: var(--primary-light);
 }
 
 .btn-icon {
@@ -2029,6 +2047,59 @@ body {
 }
 
 /* ===================================
+   FOOTER - Evolve Strategists
+   =================================== */
+.site-footer {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: var(--spacing-lg) var(--spacing-md);
+    text-align: center;
+}
+
+.footer-content {
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.powered-by {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+}
+
+.powered-by a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--primary-light);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.powered-by a:hover {
+    color: var(--accent);
+}
+
+.evolve-logo {
+    color: var(--primary);
+}
+
+.powered-by a:hover .evolve-logo {
+    color: var(--accent);
+}
+
+.footer-tagline {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+/* ===================================
    PRINT STYLES (for PDF)
    =================================== */
 @media print {
@@ -2073,7 +2144,7 @@ body {
 
 /* Focus styles */
 :focus-visible {
-    outline: 2px solid var(--gold);
+    outline: 2px solid var(--primary);
     outline-offset: 2px;
 }
 

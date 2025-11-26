@@ -861,7 +861,7 @@ function triggerConfetti() {
     canvas.height = window.innerHeight;
 
     const particles = [];
-    const colors = ['#f5a623', '#ffc857', '#22c55e', '#3b82f6', '#8b5cf6'];
+    const colors = ['#4169e1', '#5a7fe8', '#37ca37', '#188bf6', '#4fd84f'];
 
     for (let i = 0; i < 150; i++) {
         particles.push({
