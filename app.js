@@ -893,10 +893,27 @@ function triggerConfetti() {
 
 function openShareModal() {
     document.getElementById('share-overlay').classList.add('active');
+    const shareScore = document.getElementById('share-score');
+    if (shareScore && resultsData) {
+        shareScore.textContent = resultsData.totalScore;
+    }
 }
 
 function closeShareModal() {
     document.getElementById('share-overlay').classList.remove('active');
+}
+
+// Aliases for HTML onclick handlers
+function shareResults() {
+    openShareModal();
+}
+
+function hideShare() {
+    closeShareModal();
+}
+
+function hideTooltip() {
+    closeTooltip();
 }
 
 function shareTwitter() {
@@ -917,6 +934,11 @@ function copyShareLink() {
         showToast('Link copied to clipboard!', 'success');
         closeShareModal();
     });
+}
+
+// Alias for HTML
+function copyLink() {
+    copyShareLink();
 }
 
 // ===================================
