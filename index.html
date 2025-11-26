@@ -2,147 +2,363 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook Ads Profit Leak Finder | 47-Point Audit</title>
-    <meta name="description" content="Find the profit leaks draining your Facebook ad budget with this free 47-point diagnostic tool.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Facebook Ads Profit Leak Finder | Free 47-Point Audit Tool</title>
+    <meta name="description" content="Find the profit leaks draining your Facebook ad budget with this free 47-point diagnostic tool. Get a personalized fix list in 5 minutes.">
+    <meta property="og:title" content="Facebook Ads Profit Leak Finder">
+    <meta property="og:description" content="I just audited my Facebook Ads account and found where I'm leaking money. Try this free 47-point diagnostic tool.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 </head>
 <body>
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
     <div class="app-container">
+        <!-- Splash/Intro Screen -->
+        <section id="splash" class="screen active">
+            <div class="splash-content">
+                <div class="logo-animation">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="28" stroke="url(#gold-gradient)" stroke-width="4"/>
+                            <path d="M20 30L27 37L40 24" stroke="url(#gold-gradient)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="checkmark"/>
+                            <defs>
+                                <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f5a623"/>
+                                    <stop offset="100%" style="stop-color:#ffc857"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h1 class="logo-text">Profit Leak<span>Finder</span></h1>
+                </div>
+                <p class="splash-tagline">Facebook Ads Diagnostic Tool</p>
+                <div class="splash-loader">
+                    <div class="loader-bar"></div>
+                </div>
+            </div>
+        </section>
+
         <!-- Hero Section -->
-        <section id="hero" class="screen active">
+        <section id="hero" class="screen">
             <div class="hero-content">
                 <div class="badge">FREE DIAGNOSTIC TOOL</div>
                 <h1>Find the Profit Leaks <span class="highlight">Draining Your Facebook Ad Budget</span></h1>
                 <p class="tagline">The 47-Point Audit That's Saved Clients $127K+</p>
-                <p class="description">Answer 47 quick questions about your Facebook Ads account and discover exactly where you're losing money — plus get a personalized fix list.</p>
-                <div class="stats">
-                    <div class="stat">
+                <p class="description">Answer quick questions about your Facebook Ads account and discover exactly where you're losing money — plus get a personalized fix list.</p>
+
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 11l3 3L22 4"/>
+                                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                            </svg>
+                        </div>
                         <span class="stat-number">47</span>
                         <span class="stat-label">Checkpoints</span>
                     </div>
-                    <div class="stat">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                            </svg>
+                        </div>
                         <span class="stat-number">6</span>
                         <span class="stat-label">Key Areas</span>
                     </div>
-                    <div class="stat">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
                         <span class="stat-number">5 min</span>
                         <span class="stat-label">To Complete</span>
                     </div>
                 </div>
-                <button class="btn-primary" onclick="startAudit()">
+
+                <div class="social-proof">
+                    <div class="avatars">
+                        <div class="avatar">JK</div>
+                        <div class="avatar">SM</div>
+                        <div class="avatar">AR</div>
+                        <div class="avatar">+</div>
+                    </div>
+                    <span>2,847 audits completed this month</span>
+                </div>
+
+                <button class="btn-primary btn-large" onclick="startAudit()">
                     Start Your Free Audit
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </button>
-                <p class="trust-text">No credit card required • Results in 5 minutes</p>
+
+                <p class="trust-text">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    No credit card required • Results in 5 minutes
+                </p>
             </div>
         </section>
 
         <!-- Audit Form -->
         <section id="audit-form" class="screen">
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill"></div>
+            <div class="form-header">
+                <button class="back-btn" onclick="goBack()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span class="progress-text" id="progress-text">Section 1 of 6</span>
+                        <span class="progress-percent" id="progress-percent">17%</span>
+                    </div>
                 </div>
-                <span class="progress-text" id="progress-text">Section 1 of 6</span>
+                <button class="save-btn" onclick="saveProgress()" title="Save Progress">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
+                        <path d="M17 21v-8H7v8M7 3v5h8"/>
+                    </svg>
+                </button>
             </div>
 
             <form id="audit-form-element">
                 <!-- Section 1: Account Architecture -->
                 <div class="form-section active" data-section="1">
                     <div class="section-header">
+                        <div class="section-badge">Section 1 of 6</div>
                         <div class="section-icon">🏗️</div>
-                        <div>
-                            <h2>Account Architecture</h2>
-                            <p class="section-subtitle">How well is your account structured?</p>
-                        </div>
+                        <h2>Account Architecture</h2>
+                        <p class="section-subtitle">How well is your account structured? Poor structure = wasted budget competing against yourself.</p>
                     </div>
 
                     <div class="subsection">
                         <h3>Campaign Level</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q1_1">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Campaign budget is at least $50/day</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q1_2">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">No campaigns competing for the same audience</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="2">
-                                <input type="checkbox" name="q1_3">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Using proper campaign objectives</span>
-                                <span class="points-badge">2 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="2">
-                                <input type="checkbox" name="q1_4">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Advantage+ campaigns separated from manual</span>
-                                <span class="points-badge">2 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="3" data-name="q1_1">
+                                <input type="checkbox" name="q1_1" id="q1_1">
+                                <label for="q1_1">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Campaign budget is at least $50/day</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'budget50')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q1_1')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q1_2">
+                                <input type="checkbox" name="q1_2" id="q1_2">
+                                <label for="q1_2">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">No campaigns competing for the same audience</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'audienceCompete')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q1_2')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="2" data-name="q1_3">
+                                <input type="checkbox" name="q1_3" id="q1_3">
+                                <label for="q1_3">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Using proper campaign objectives</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">2 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'objectives')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q1_3')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="2" data-name="q1_4">
+                                <input type="checkbox" name="q1_4" id="q1_4">
+                                <label for="q1_4">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Advantage+ campaigns separated from manual</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">2 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'advantagePlus')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q1_4')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="subsection">
                         <h3>Ad Set Level</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="2">
-                                <input type="checkbox" name="q1_5">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Running 3-5 ad sets per campaign max (not 10+)</span>
-                                <span class="points-badge">2 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q1_6">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Audience size is 500K-2M per ad set</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="2">
-                                <input type="checkbox" name="q1_7">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Using CBO (Campaign Budget Optimization)</span>
-                                <span class="points-badge">2 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="2">
-                                <input type="checkbox" name="q1_8">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Ad sets have spent $100+ before making decisions</span>
-                                <span class="points-badge">2 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="2" data-name="q1_5">
+                                <input type="checkbox" name="q1_5" id="q1_5">
+                                <label for="q1_5">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Running 3-5 ad sets per campaign max</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">2 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'adSetCount')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q1_5')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q1_6">
+                                <input type="checkbox" name="q1_6" id="q1_6">
+                                <label for="q1_6">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Audience size is 500K-2M per ad set</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'audienceSize')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q1_6')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="2" data-name="q1_7">
+                                <input type="checkbox" name="q1_7" id="q1_7">
+                                <label for="q1_7">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Using CBO (Campaign Budget Optimization)</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">2 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'cbo')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q1_7')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="2" data-name="q1_8">
+                                <input type="checkbox" name="q1_8" id="q1_8">
+                                <label for="q1_8">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Ad sets have spent $100+ before decisions</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">2 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'adSetSpend')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q1_8')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="subsection">
                         <h3>Ad Level</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="2">
-                                <input type="checkbox" name="q1_9">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Running 2-4 ads per ad set (not 10+)</span>
-                                <span class="points-badge">2 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="2">
-                                <input type="checkbox" name="q1_10">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Ads run 3-7 days before judging performance</span>
-                                <span class="points-badge">2 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="2" data-name="q1_9">
+                                <input type="checkbox" name="q1_9" id="q1_9">
+                                <label for="q1_9">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Running 2-4 ads per ad set (not 10+)</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">2 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'adCount')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q1_9')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="2" data-name="q1_10">
+                                <input type="checkbox" name="q1_10" id="q1_10">
+                                <label for="q1_10">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Ads run 3-7 days before judging performance</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">2 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'adRunTime')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q1_10')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="section-nav">
-                        <button type="button" class="btn-secondary" onclick="goToHero()">Back</button>
+                        <div class="section-score">
+                            <span class="current-score">0</span>/<span class="max-score">23</span> points
+                        </div>
                         <button type="button" class="btn-primary" onclick="nextSection()">
                             Continue
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -155,117 +371,287 @@
                 <!-- Section 2: Audience Targeting -->
                 <div class="form-section" data-section="2">
                     <div class="section-header">
+                        <div class="section-badge">Section 2 of 6</div>
                         <div class="section-icon">🎯</div>
-                        <div>
-                            <h2>Audience Targeting</h2>
-                            <p class="section-subtitle">Are you reaching the right people efficiently?</p>
-                        </div>
+                        <h2>Audience Targeting</h2>
+                        <p class="section-subtitle">Are you reaching the right people? Overlap and poor targeting inflate CPMs by 30%+.</p>
                     </div>
 
                     <div class="subsection">
                         <h3>Overlap Issues</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="5">
-                                <input type="checkbox" name="q2_1">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Audience Overlap is under 25%</span>
-                                <span class="points-badge">5 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q2_2">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Not stacking "Engaged Shoppers" with interest targeting</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q2_3">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Lookalikes and interests in separate ad sets</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="5" data-name="q2_1">
+                                <input type="checkbox" name="q2_1" id="q2_1">
+                                <label for="q2_1">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Audience Overlap is under 25%</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge high">5 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'overlap')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q2_1')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q2_2">
+                                <input type="checkbox" name="q2_2" id="q2_2">
+                                <label for="q2_2">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Not stacking "Engaged Shoppers" with interests</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'engagedShoppers')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q2_2')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="4" data-name="q2_3">
+                                <input type="checkbox" name="q2_3" id="q2_3">
+                                <label for="q2_3">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Lookalikes and interests in separate ad sets</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'separateAudiences')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q2_3')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="subsection">
                         <h3>Targeting Mistakes</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q2_4">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Excluding past purchasers from prospecting</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q2_5">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Detailed targeting expansion OFF initially</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q2_6">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Not targeting low-intent countries</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q2_7">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Age range is specific, not 18-65+</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="4" data-name="q2_4">
+                                <input type="checkbox" name="q2_4" id="q2_4">
+                                <label for="q2_4">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Excluding past purchasers from prospecting</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'excludePurchasers')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q2_4')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q2_5">
+                                <input type="checkbox" name="q2_5" id="q2_5">
+                                <label for="q2_5">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Detailed targeting expansion OFF initially</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'targetingExpansion')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q2_5')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q2_6">
+                                <input type="checkbox" name="q2_6" id="q2_6">
+                                <label for="q2_6">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Not targeting low-intent countries</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'lowIntentCountries')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q2_6')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q2_7">
+                                <input type="checkbox" name="q2_7" id="q2_7">
+                                <label for="q2_7">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Age range is specific, not 18-65+</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'ageRange')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q2_7')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="subsection">
                         <h3>Lookalike Strategy</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q2_8">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Using 1% lookalikes (not 5-10%)</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q2_9">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Lookalikes based on purchasers, not page visitors</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q2_10">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Lookalike seed has 1,000+ customers</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="4" data-name="q2_8">
+                                <input type="checkbox" name="q2_8" id="q2_8">
+                                <label for="q2_8">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Using 1% lookalikes (not 5-10%)</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'lookalike1')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q2_8')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="4" data-name="q2_9">
+                                <input type="checkbox" name="q2_9" id="q2_9">
+                                <label for="q2_9">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Lookalikes based on purchasers, not visitors</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'lookalikePurchasers')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q2_9')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q2_10">
+                                <input type="checkbox" name="q2_10" id="q2_10">
+                                <label for="q2_10">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Lookalike seed has 1,000+ customers</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'lookalikeSeed')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q2_10')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="subsection">
                         <h3>Retargeting</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q2_11">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Separate campaigns for warm traffic</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q2_12">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Excluding recent visitors from cold campaigns</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q2_13">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Proper attribution windows (7-day click)</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="4" data-name="q2_11">
+                                <input type="checkbox" name="q2_11" id="q2_11">
+                                <label for="q2_11">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Separate campaigns for warm traffic</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'warmTraffic')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q2_11')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q2_12">
+                                <input type="checkbox" name="q2_12" id="q2_12">
+                                <label for="q2_12">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Excluding recent visitors from cold campaigns</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'excludeVisitors')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q2_12')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q2_13">
+                                <input type="checkbox" name="q2_13" id="q2_13">
+                                <label for="q2_13">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Proper attribution windows (7-day click)</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'attribution')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q2_13')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="section-nav">
-                        <button type="button" class="btn-secondary" onclick="prevSection()">Back</button>
+                        <div class="section-score">
+                            <span class="current-score">0</span>/<span class="max-score">46</span> points
+                        </div>
                         <button type="button" class="btn-primary" onclick="nextSection()">
                             Continue
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -278,81 +664,186 @@
                 <!-- Section 3: Creative Performance -->
                 <div class="form-section" data-section="3">
                     <div class="section-header">
+                        <div class="section-badge">Section 3 of 6</div>
                         <div class="section-icon">🎨</div>
-                        <div>
-                            <h2>Creative Performance</h2>
-                            <p class="section-subtitle">How effective are your ads?</p>
-                        </div>
+                        <h2>Creative Performance</h2>
+                        <p class="section-subtitle">Creative is the #1 lever for performance. Bad creative = high CPMs and low conversions.</p>
                     </div>
 
                     <div class="subsection">
                         <h3>Ad Format</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q3_1">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Using video OR carousel for cold traffic</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q3_2">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Testing different hooks in first 3 seconds</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q3_3">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Using UGC-style content</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="4" data-name="q3_1">
+                                <input type="checkbox" name="q3_1" id="q3_1">
+                                <label for="q3_1">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Using video OR carousel for cold traffic</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'videoCarousel')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q3_1')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="4" data-name="q3_2">
+                                <input type="checkbox" name="q3_2" id="q3_2">
+                                <label for="q3_2">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Testing different hooks in first 3 seconds</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'hooks')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q3_2')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q3_3">
+                                <input type="checkbox" name="q3_3" id="q3_3">
+                                <label for="q3_3">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Using UGC-style content</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'ugc')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q3_3')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="subsection">
                         <h3>Copy</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q3_4">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Headline calls out specific pain point</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q3_5">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Offer clear in first line</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q3_6">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Using social proof in ad copy</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="3" data-name="q3_4">
+                                <input type="checkbox" name="q3_4" id="q3_4">
+                                <label for="q3_4">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Headline calls out specific pain point</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'painPoint')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q3_4')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q3_5">
+                                <input type="checkbox" name="q3_5" id="q3_5">
+                                <label for="q3_5">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Offer clear in first line</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'clearOffer')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q3_5')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q3_6">
+                                <input type="checkbox" name="q3_6" id="q3_6">
+                                <label for="q3_6">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Using social proof in ad copy</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'socialProof')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q3_6')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="subsection">
                         <h3>Testing</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q3_7">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Letting winners run 14+ days before refresh</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q3_8">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Frequency below 3.5 (not exhausting audience)</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="4" data-name="q3_7">
+                                <input type="checkbox" name="q3_7" id="q3_7">
+                                <label for="q3_7">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Letting winners run 14+ days before refresh</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'winners')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q3_7')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="4" data-name="q3_8">
+                                <input type="checkbox" name="q3_8" id="q3_8">
+                                <label for="q3_8">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Frequency below 3.5 (not exhausting audience)</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'frequency')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q3_8')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="section-nav">
-                        <button type="button" class="btn-secondary" onclick="prevSection()">Back</button>
+                        <div class="section-score">
+                            <span class="current-score">0</span>/<span class="max-score">28</span> points
+                        </div>
                         <button type="button" class="btn-primary" onclick="nextSection()">
                             Continue
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -365,87 +856,205 @@
                 <!-- Section 4: Conversion Setup -->
                 <div class="form-section" data-section="4">
                     <div class="section-header">
+                        <div class="section-badge">Section 4 of 6</div>
                         <div class="section-icon">🔄</div>
-                        <div>
-                            <h2>Conversion Setup</h2>
-                            <p class="section-subtitle">Is your tracking and landing page optimized?</p>
-                        </div>
+                        <h2>Conversion Setup</h2>
+                        <p class="section-subtitle">Broken tracking = 30% higher CPAs. This is where most advertisers leak money silently.</p>
                     </div>
 
                     <div class="subsection">
                         <h3>Pixel & Tracking</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="5">
-                                <input type="checkbox" name="q4_1">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Facebook Pixel firing correctly</span>
-                                <span class="points-badge">5 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="5">
-                                <input type="checkbox" name="q4_2">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Tracking the RIGHT event (Purchase, not Add to Cart)</span>
-                                <span class="points-badge">5 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q4_3">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Using Conversions API alongside Pixel</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q4_4">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Conversion event firing 50x/week per ad set</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="5" data-name="q4_1">
+                                <input type="checkbox" name="q4_1" id="q4_1">
+                                <label for="q4_1">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Facebook Pixel firing correctly</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge high">5 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'pixel')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q4_1')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="5" data-name="q4_2">
+                                <input type="checkbox" name="q4_2" id="q4_2">
+                                <label for="q4_2">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Tracking the RIGHT event (Purchase, not ATC)</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge high">5 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'rightEvent')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q4_2')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="4" data-name="q4_3">
+                                <input type="checkbox" name="q4_3" id="q4_3">
+                                <label for="q4_3">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Using Conversions API alongside Pixel</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'capi')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q4_3')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="4" data-name="q4_4">
+                                <input type="checkbox" name="q4_4" id="q4_4">
+                                <label for="q4_4">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Conversion event firing 50x/week per ad set</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'conversionVolume')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q4_4')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="subsection">
                         <h3>Landing Page</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q4_5">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Ad → landing page message match</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q4_6">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Mobile load time under 3 seconds</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q4_7">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Clear CTA above the fold</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="3" data-name="q4_5">
+                                <input type="checkbox" name="q4_5" id="q4_5">
+                                <label for="q4_5">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Ad to landing page message match</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'messageMatch')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q4_5')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q4_6">
+                                <input type="checkbox" name="q4_6" id="q4_6">
+                                <label for="q4_6">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Mobile load time under 3 seconds</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'loadTime')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q4_6')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q4_7">
+                                <input type="checkbox" name="q4_7" id="q4_7">
+                                <label for="q4_7">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Clear CTA above the fold</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'ctaFold')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q4_7')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="subsection">
                         <h3>Offer Strength</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q4_8">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Offer competitive vs alternatives</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q4_9">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Max CPA calculated for profitability</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="3" data-name="q4_8">
+                                <input type="checkbox" name="q4_8" id="q4_8">
+                                <label for="q4_8">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Offer competitive vs alternatives</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'competitive')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q4_8')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q4_9">
+                                <input type="checkbox" name="q4_9" id="q4_9">
+                                <label for="q4_9">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Max CPA calculated for profitability</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'maxCpa')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q4_9')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="section-nav">
-                        <button type="button" class="btn-secondary" onclick="prevSection()">Back</button>
+                        <div class="section-score">
+                            <span class="current-score">0</span>/<span class="max-score">33</span> points
+                        </div>
                         <button type="button" class="btn-primary" onclick="nextSection()">
                             Continue
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -458,81 +1067,186 @@
                 <!-- Section 5: Bidding & Budget -->
                 <div class="form-section" data-section="5">
                     <div class="section-header">
+                        <div class="section-badge">Section 5 of 6</div>
                         <div class="section-icon">💰</div>
-                        <div>
-                            <h2>Bidding & Budget</h2>
-                            <p class="section-subtitle">Are you spending wisely?</p>
-                        </div>
+                        <h2>Bidding & Budget</h2>
+                        <p class="section-subtitle">Wrong bidding strategy = paying 2x what you should. Budget mistakes reset learning.</p>
                     </div>
 
                     <div class="subsection">
                         <h3>Bid Strategy</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q5_1">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Using "Highest Volume" initially</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q5_2">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Cost Cap set 30-50% above target (if using)</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q5_3">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Avoiding Bid Cap unless advanced</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="4" data-name="q5_1">
+                                <input type="checkbox" name="q5_1" id="q5_1">
+                                <label for="q5_1">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Using "Highest Volume" initially</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'highestVolume')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q5_1')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q5_2">
+                                <input type="checkbox" name="q5_2" id="q5_2">
+                                <label for="q5_2">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Cost Cap set 30-50% above target (if using)</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'costCap')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q5_2')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q5_3">
+                                <input type="checkbox" name="q5_3" id="q5_3">
+                                <label for="q5_3">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Avoiding Bid Cap unless advanced</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'bidCap')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q5_3')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="subsection">
                         <h3>Budget Issues</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q5_4">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">No rapid budget increases (>20%/day)</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q5_5">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Ads running 24/7 or properly scheduled</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q5_6">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Budget appropriate for purchase cycle</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="4" data-name="q5_4">
+                                <input type="checkbox" name="q5_4" id="q5_4">
+                                <label for="q5_4">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">No rapid budget increases (>20%/day)</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'budgetChanges')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q5_4')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q5_5">
+                                <input type="checkbox" name="q5_5" id="q5_5">
+                                <label for="q5_5">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Ads running 24/7 or properly scheduled</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'scheduling')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q5_5')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q5_6">
+                                <input type="checkbox" name="q5_6" id="q5_6">
+                                <label for="q5_6">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Budget appropriate for purchase cycle</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'purchaseCycle')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q5_6')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="subsection">
                         <h3>Learning Phase</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q5_7">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Leaving ad sets alone during learning</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q5_8">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Getting 50 conversions/week per ad set</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="4" data-name="q5_7">
+                                <input type="checkbox" name="q5_7" id="q5_7">
+                                <label for="q5_7">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Leaving ad sets alone during learning</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'learningPhase')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q5_7')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="4" data-name="q5_8">
+                                <input type="checkbox" name="q5_8" id="q5_8">
+                                <label for="q5_8">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Getting 50 conversions/week per ad set</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, '50conversions')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q5_8')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="section-nav">
-                        <button type="button" class="btn-secondary" onclick="prevSection()">Back</button>
+                        <div class="section-score">
+                            <span class="current-score">0</span>/<span class="max-score">28</span> points
+                        </div>
                         <button type="button" class="btn-primary" onclick="nextSection()">
                             Continue
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -545,64 +1259,143 @@
                 <!-- Section 6: Advanced Optimization -->
                 <div class="form-section" data-section="6">
                     <div class="section-header">
+                        <div class="section-badge">Section 6 of 6 - Final!</div>
                         <div class="section-icon">⚡</div>
-                        <div>
-                            <h2>Advanced Optimization</h2>
-                            <p class="section-subtitle">Final polish for maximum performance</p>
-                        </div>
+                        <h2>Advanced Optimization</h2>
+                        <p class="section-subtitle">The final polish that separates top 5% advertisers from everyone else.</p>
                     </div>
 
                     <div class="subsection">
                         <h3>Placement Control</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q6_1">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Reviewing placement breakdown monthly</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q6_2">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Removing placements with 2x+ CPA</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="3">
-                                <input type="checkbox" name="q6_3">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Not running Audience Network for conversions</span>
-                                <span class="points-badge">3 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="4" data-name="q6_1">
+                                <input type="checkbox" name="q6_1" id="q6_1">
+                                <label for="q6_1">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Reviewing placement breakdown monthly</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'placementReview')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q6_1')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="4" data-name="q6_2">
+                                <input type="checkbox" name="q6_2" id="q6_2">
+                                <label for="q6_2">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Removing placements with 2x+ CPA</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'badPlacements')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q6_2')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="3" data-name="q6_3">
+                                <input type="checkbox" name="q6_3" id="q6_3">
+                                <label for="q6_3">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Not running Audience Network for conversions</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">3 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'audienceNetwork')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q6_3')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="subsection">
                         <h3>Account Hygiene</h3>
                         <div class="checkbox-group">
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q6_4">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Pausing ads with 0 conversions after $50 spend</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q6_5">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Refreshing creatives every 4-6 weeks</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
-                            <label class="checkbox-item" data-points="4">
-                                <input type="checkbox" name="q6_6">
-                                <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Excluding converted users from retargeting</span>
-                                <span class="points-badge">4 pts</span>
-                            </label>
+                            <div class="checkbox-item" data-points="4" data-name="q6_4">
+                                <input type="checkbox" name="q6_4" id="q6_4">
+                                <label for="q6_4">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Pausing ads with 0 conversions after $50</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'pauseZero')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q6_4')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="4" data-name="q6_5">
+                                <input type="checkbox" name="q6_5" id="q6_5">
+                                <label for="q6_5">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Refreshing creatives every 4-6 weeks</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'refreshCreatives')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q6_5')">Not sure</button>
+                            </div>
+                            <div class="checkbox-item" data-points="4" data-name="q6_6">
+                                <input type="checkbox" name="q6_6" id="q6_6">
+                                <label for="q6_6">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="checkbox-content">
+                                        <span class="checkbox-text">Excluding converted users from retargeting</span>
+                                        <span class="checkbox-meta">
+                                            <span class="points-badge">4 pts</span>
+                                            <button type="button" class="help-btn" onclick="showTooltip(event, 'excludeConverted')">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="unsure-btn" onclick="markUnsure('q6_6')">Not sure</button>
+                            </div>
                         </div>
                     </div>
 
                     <div class="section-nav">
-                        <button type="button" class="btn-secondary" onclick="prevSection()">Back</button>
-                        <button type="button" class="btn-primary" onclick="showEmailCapture()">
+                        <div class="section-score">
+                            <span class="current-score">0</span>/<span class="max-score">23</span> points
+                        </div>
+                        <button type="button" class="btn-primary btn-finish" onclick="showEmailCapture()">
                             See My Results
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -616,51 +1409,129 @@
         <!-- Email Capture -->
         <section id="email-capture" class="screen">
             <div class="email-content">
-                <div class="email-icon">📊</div>
-                <h2>Your Results Are Ready!</h2>
-                <p>Enter your email to see your personalized profit leak report and get actionable fixes.</p>
+                <div class="email-header">
+                    <div class="score-preview">
+                        <div class="preview-ring">
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" stroke="rgba(255,255,255,0.1)" stroke-width="8" fill="none"/>
+                                <circle cx="50" cy="50" r="45" stroke="url(#preview-gradient)" stroke-width="8" fill="none"
+                                    stroke-dasharray="283" stroke-dashoffset="70" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+                                <defs>
+                                    <linearGradient id="preview-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#f5a623"/>
+                                        <stop offset="100%" style="stop-color:#ffc857"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <span class="preview-text">?</span>
+                        </div>
+                    </div>
+                    <h2>Your Results Are Ready!</h2>
+                    <p>Enter your details to unlock your personalized profit leak report.</p>
+                </div>
+
                 <form id="email-form" onsubmit="submitEmail(event)">
                     <div class="input-group">
-                        <input type="text" id="user-name" placeholder="Your Name" required>
+                        <label for="user-name">Name</label>
+                        <input type="text" id="user-name" placeholder="Enter your name" required>
                     </div>
                     <div class="input-group">
-                        <input type="email" id="user-email" placeholder="Your Email" required>
+                        <label for="user-email">Email</label>
+                        <input type="email" id="user-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="user-spend">Monthly Ad Spend (optional)</label>
+                        <select id="user-spend">
+                            <option value="">Select range...</option>
+                            <option value="0-1000">$0 - $1,000</option>
+                            <option value="1000-5000">$1,000 - $5,000</option>
+                            <option value="5000-10000">$5,000 - $10,000</option>
+                            <option value="10000-50000">$10,000 - $50,000</option>
+                            <option value="50000+">$50,000+</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn-primary btn-full">
-                        Show My Results
+                        Unlock My Results
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0110 0v4"/>
                         </svg>
                     </button>
                 </form>
-                <p class="privacy-text">We respect your privacy. No spam, ever.</p>
+
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span>No spam, ever</span>
+                    </div>
+                    <div class="trust-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                            <path d="M22 4L12 14.01l-3-3"/>
+                        </svg>
+                        <span>2,847 audits this month</span>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Results -->
         <section id="results" class="screen">
-            <div class="results-content">
+            <div class="results-content" id="results-content">
                 <div class="results-header">
+                    <div class="results-badge">AUDIT COMPLETE</div>
                     <h2>Your Profit Leak Report</h2>
                     <p class="results-name" id="results-name"></p>
+                    <p class="results-date" id="results-date"></p>
                 </div>
 
-                <div class="score-card">
-                    <div class="score-circle">
-                        <svg class="score-ring" viewBox="0 0 120 120">
-                            <circle class="score-ring-bg" cx="60" cy="60" r="54"/>
-                            <circle class="score-ring-progress" cx="60" cy="60" r="54" id="score-ring"/>
-                        </svg>
-                        <div class="score-value">
-                            <span class="score-number" id="score-number">0</span>
-                            <span class="score-total">/181</span>
+                <div class="score-card" id="score-card">
+                    <div class="score-main">
+                        <div class="score-circle">
+                            <svg class="score-ring" viewBox="0 0 120 120">
+                                <circle class="score-ring-bg" cx="60" cy="60" r="54"/>
+                                <circle class="score-ring-progress" cx="60" cy="60" r="54" id="score-ring"/>
+                            </svg>
+                            <div class="score-value">
+                                <span class="score-number" id="score-number">0</span>
+                                <span class="score-total">/181</span>
+                            </div>
+                        </div>
+                        <div class="score-info">
+                            <div class="tier-badge" id="tier-badge">Loading...</div>
+                            <p class="tier-description" id="tier-description"></p>
                         </div>
                     </div>
-                    <div class="score-details">
-                        <div class="tier-badge" id="tier-badge">Loading...</div>
-                        <p class="tier-description" id="tier-description"></p>
-                        <div class="waste-estimate" id="waste-estimate"></div>
+                    <div class="score-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Estimated Monthly Waste</span>
+                            <span class="meta-value" id="waste-estimate">$0</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Your Percentile</span>
+                            <span class="meta-value" id="percentile">Top 50%</span>
+                        </div>
                     </div>
+                </div>
+
+                <div class="benchmark-card">
+                    <h3>How You Compare</h3>
+                    <div class="benchmark-bar">
+                        <div class="benchmark-zones">
+                            <div class="zone crisis">Crisis</div>
+                            <div class="zone struggling">Struggling</div>
+                            <div class="zone average">Average</div>
+                            <div class="zone strong">Strong</div>
+                            <div class="zone elite">Elite</div>
+                        </div>
+                        <div class="benchmark-marker" id="benchmark-marker">
+                            <div class="marker-dot"></div>
+                            <div class="marker-label">You</div>
+                        </div>
+                    </div>
+                    <p class="benchmark-note">Based on 2,847 audits this month</p>
                 </div>
 
                 <div class="section-breakdown">
@@ -669,15 +1540,75 @@
                 </div>
 
                 <div class="priority-fixes">
-                    <h3>🔥 Top 3 Priority Fixes</h3>
+                    <h3>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        Top Priority Fixes
+                    </h3>
                     <div class="fixes-list" id="fixes-list"></div>
                 </div>
 
+                <div class="unsure-summary" id="unsure-summary" style="display: none;">
+                    <h3>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/>
+                        </svg>
+                        Areas You're Unsure About
+                    </h3>
+                    <p class="unsure-note">These items were marked "Not sure" - they may represent additional optimization opportunities.</p>
+                    <div class="unsure-list" id="unsure-list"></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-secondary" onclick="downloadPDF()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                        Download PDF Report
+                    </button>
+                    <button class="btn-secondary" onclick="shareResults()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"/>
+                            <circle cx="6" cy="12" r="3"/>
+                            <circle cx="18" cy="19" r="3"/>
+                            <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/>
+                        </svg>
+                        Share Results
+                    </button>
+                </div>
+
                 <div class="cta-section">
-                    <h3>Want Expert Help Fixing These Issues?</h3>
-                    <p>Book a free 30-minute audit call and I'll show you exactly how to plug these leaks.</p>
+                    <div class="cta-content">
+                        <h3>Want Expert Help Fixing These Issues?</h3>
+                        <p>Book a free 30-minute strategy call and I'll create a custom action plan to plug your profit leaks.</p>
+                        <ul class="cta-benefits">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                    <path d="M22 4L12 14.01l-3-3"/>
+                                </svg>
+                                Personalized audit review
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                    <path d="M22 4L12 14.01l-3-3"/>
+                                </svg>
+                                Priority fix roadmap
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                    <path d="M22 4L12 14.01l-3-3"/>
+                                </svg>
+                                No obligation
+                            </li>
+                        </ul>
+                    </div>
                     <a href="https://calendly.com" target="_blank" class="btn-primary btn-cta">
-                        Book Your Free Audit Call
+                        Book Your Free Strategy Call
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
@@ -685,11 +1616,74 @@
                     <p class="cta-subtext">— Marcel, Performance Marketing Specialist</p>
                 </div>
 
-                <button class="btn-secondary btn-restart" onclick="restartAudit()">
+                <button class="btn-text" onclick="restartAudit()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 4v6h6M23 20v-6h-6"/>
+                        <path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15"/>
+                    </svg>
                     Start New Audit
                 </button>
             </div>
         </section>
+    </div>
+
+    <!-- Tooltip Modal -->
+    <div class="tooltip-overlay" id="tooltip-overlay" onclick="hideTooltip()">
+        <div class="tooltip-modal" onclick="event.stopPropagation()">
+            <button class="tooltip-close" onclick="hideTooltip()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            <h4 id="tooltip-title"></h4>
+            <p id="tooltip-content"></p>
+            <div class="tooltip-tip" id="tooltip-tip"></div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="share-overlay" id="share-overlay" onclick="hideShare()">
+        <div class="share-modal" onclick="event.stopPropagation()">
+            <button class="share-close" onclick="hideShare()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            <h3>Share Your Results</h3>
+            <div class="share-buttons">
+                <button class="share-btn twitter" onclick="shareTwitter()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    Share on X
+                </button>
+                <button class="share-btn linkedin" onclick="shareLinkedIn()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    Share on LinkedIn
+                </button>
+                <button class="share-btn copy" onclick="copyLink()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                    </svg>
+                    Copy Link
+                </button>
+            </div>
+            <div class="share-preview">
+                <p>"I just scored <span id="share-score">0</span>/181 on the Facebook Ads Profit Leak Finder. Find out where your ad budget is leaking!"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+            <path d="M22 4L12 14.01l-3-3"/>
+        </svg>
+        <span id="toast-message">Saved!</span>
     </div>
 
     <script src="app.js"></script>
